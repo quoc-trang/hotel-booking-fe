@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-loading';
 
 import { AdminLayout, ClientLayout, GuestLayout } from '../components';
+import AdministratorLayout from '../components/Administrator/AdministratorLayout';
 import {
   CheckoutConfirmationPage,
   CheckoutPage,
@@ -20,6 +21,7 @@ import {
   RoomDetail,
   UserProfilePage,
 } from '../pages';
+import Administrator from '../pages/Administrator';
 
 const hist = createBrowserHistory();
 
@@ -54,6 +56,10 @@ const Router = () => {
           <Route path="rooms" element={<HotelManagement />} loading />
           <Route path="rooms/:roomId" element={<RoomDetail />} loading />
           <Route path="profile" element={<HotelInfo />} loading />
+        </Route>
+
+        <Route path="/admin" element={<AdministratorLayout />} loading>
+          <Route index element={<Administrator />} loading />
         </Route>
 
         <Route path="/login" element={<LoginPage />} loading />

@@ -1,5 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { CaretDownOutlined, PhoneOutlined } from '@ant-design/icons';
+import {
+  CaretDownOutlined,
+  ExclamationCircleOutlined,
+  PhoneOutlined,
+} from '@ant-design/icons';
 import {
   Breadcrumb,
   Button,
@@ -11,6 +15,7 @@ import {
   Row,
   Skeleton,
   Spin,
+  Tooltip,
 } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useRef, useState } from 'react';
@@ -258,6 +263,12 @@ const DetailsHotelPage = () => {
                   </span>
                   {t('details__hotel.wonderful_reviews')}
                 </h5>
+                <Tooltip
+                  style={{ marginTop: '10px' }}
+                  title="Report this hotel"
+                >
+                  <ExclamationCircleOutlined />
+                </Tooltip>
               </Col>
               <Col
                 lg={{ span: 12 }}

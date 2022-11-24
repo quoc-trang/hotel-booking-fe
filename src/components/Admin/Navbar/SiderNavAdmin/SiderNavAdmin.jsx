@@ -1,4 +1,8 @@
-import { BarChartOutlined, BarsOutlined } from '@ant-design/icons';
+import {
+  BarChartOutlined,
+  BarsOutlined,
+  DownloadOutlined,
+} from '@ant-design/icons';
 import { Divider, Space } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -49,6 +53,12 @@ const SiderNavAdmin = () => {
           <NavLink className="link" to="profile">
             <RiHotelFill className="icon" />
             <span className="text__icon">My Hotel</span>
+          </NavLink>
+        </Space>
+        <Space className="space">
+          <NavLink className="link" to="profile">
+            <DownloadOutlined className="icon" />
+            <span className="text__icon">Export Excel</span>
           </NavLink>
         </Space>
       </div>

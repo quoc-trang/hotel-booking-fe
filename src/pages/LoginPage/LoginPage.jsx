@@ -38,7 +38,7 @@ const LoginPage = () => {
         useLocalToken();
         if (role === 'ROLE_HOTEL') {
           navigate(`/manageHotel/${response.data.data.hotelId}`);
-        } else if (role === 'ROLE_USER' || role === 'ROLE_ADMIN') {
+        } else if (role === 'ROLE_USER') {
           if (location.state) {
             const prePage = location.state;
             const hotelId = prePage.slice(7);
@@ -48,6 +48,8 @@ const LoginPage = () => {
           } else {
             navigate('/');
           }
+        } else if (role === 'ROLE_ADMIN') {
+          navigate('/admin');
         }
         message.success('Login successfully');
       }
