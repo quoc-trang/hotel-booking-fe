@@ -9,6 +9,8 @@ const AdministratorLayout = () => {
 
   if (role !== 'ROLE_ADMIN') {
     return <Navigate to="/login" replace />;
+  } else {
+    <Navigate to="/admin" replace />;
   }
   const loadingContext = useLoadingContext();
 

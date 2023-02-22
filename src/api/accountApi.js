@@ -8,11 +8,11 @@ const accountApi = {
     },
     disableAccount: async (id) => {
         useLocalToken()
-        return axiosInstance.lock(`/users/${id}`)
+        return axiosInstance.post(`users/disable/${id}`)
     },
     enableAccount: async (id) => {
         useLocalToken()
-        return axiosInstance.unlock(`/users/${id}`)
+        return axiosInstance.post(`users/enable/${id}`)
     },
 
 }

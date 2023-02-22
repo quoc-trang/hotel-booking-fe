@@ -1,4 +1,4 @@
-import { Switch, Table, Tag, notification } from 'antd';
+import { Button, Popconfirm, Table, Tag } from 'antd';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -6,6 +6,8 @@ import accountApi from '../../api/accountApi';
 
 const Administrator = () => {
   const [accounts, setAccounts] = useState([]);
+  const [status, setStatus] = useState(false);
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     const getAllAccountApi = async () => {
@@ -16,17 +18,29 @@ const Administrator = () => {
     };
     getAllAccountApi();
   }, []);
-  const handleDisableAccount = (id, e) => {
-    notification.open({
-      message: 'Change Status account successfully',
-      duration: 1,
-    });
-    // e ? accountApi.enableAccount(id) : accountApi.disableAccount(id);
+
+  const handleOke = async () => {
+    if (status) {
+      await accountApi.enableAccount(userId);
+      const getAllAccountApi = async () => {
+        const { data } = await accountApi.getAll();
+        let formatData = data.data.filter((item) => item.role !== 'ROLE_ADMIN');
+        formatData = formatData.map((item, index) => ({ ...item, key: index }));
+        data && setAccounts(formatData);
+      };
+      getAllAccountApi();
+    } else {
+      await accountApi.disableAccount(userId);
+      const getAllAccountApi = async () => {
+        const { data } = await accountApi.getAll();
+        let formatData = data.data.filter((item) => item.role !== 'ROLE_ADMIN');
+        formatData = formatData.map((item, index) => ({ ...item, key: index }));
+        data && setAccounts(formatData);
+      };
+      getAllAccountApi();
+    }
   };
 
-  useEffect(() => {
-    accountApi.disableAccount(2);
-  }, []);
   const columns = [
     {
       title: 'Id',
@@ -58,8 +72,13 @@ const Administrator = () => {
       title: 'Disabled',
       dataIndex: 'disabled',
       key: 'disabled',
-      render: (disabled) =>
-        disabled ? <Tag color="green">True</Tag> : <Tag color="red">False</Tag>,
+      render: (disabled) => {
+        return disabled ? (
+          <Tag color="green">True</Tag>
+        ) : (
+          <Tag color="red">False</Tag>
+        );
+      },
     },
     {
       title: 'Action',
@@ -68,14 +87,27 @@ const Administrator = () => {
       // eslint-disable-next-line no-unused-vars
       render: (_, { record }) => (
         <>
-          <Switch
-            defaultChecked={!_.disabled}
-            onChange={(e) => handleDisableAccount(_.id, e)}
-          />
+          <Popconfirm
+            title="Are you sure?"
+            onConfirm={() => handleOke()}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button
+              onClick={() => {
+                setUserId(_.id);
+                setStatus(_.disabled);
+              }}
+              type="primary"
+            >
+              change status
+            </Button>
+          </Popconfirm>
         </>
       ),
     },
   ];
+
   return (
     <Table
       loading={accounts.length < 0}

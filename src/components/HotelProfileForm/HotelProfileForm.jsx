@@ -69,7 +69,7 @@ const HotelProfileForm = (props) => {
   };
 
   const handleChangeImage = async ({ fileList: newFileList }) => {
-    setFileList(newFileList);
+    setFileList(await newFileList);
   };
 
   const uploadButton = (
@@ -242,7 +242,7 @@ const HotelProfileForm = (props) => {
               {fileList.length >= 8 ? null : uploadButton}
             </Upload>
             <Modal
-              visible={previewVisible}
+              open={previewVisible}
               title={previewTitle}
               footer={null}
               onCancel={handleCancel}

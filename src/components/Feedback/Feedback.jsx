@@ -15,11 +15,14 @@ const FeedBack = ({ hotelId, hotelData }) => {
   useEffect(() => {
     const getAllFeedback = async () => {
       const { data } = await feedbackApi.getAll(hotelId);
-      setFeedback(data.data);
+      data && setFeedback(data.data);
       loadingContext.done();
     };
     getAllFeedback();
   }, [hotelId]);
+
+  console.log(feedback);
+
   const columns = [
     {
       title: 'What customers say about our services',

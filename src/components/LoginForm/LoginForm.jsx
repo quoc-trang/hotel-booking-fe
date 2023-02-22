@@ -20,66 +20,69 @@ const LoginForm = ({ onFinish, onFinishFailed, loadingButton }) => {
     navigate('/register', { state: location.state });
   };
   return (
-    <Form
-      labelCol={layout.labelCol}
-      wrapperCol={layout.wrapperCol}
-      className="login__form"
-      name="basic"
-      initialValues={{
-        remember: true,
-      }}
-      layout="vertical"
-      size="large"
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="off"
-    >
-      <Form.Item
-        label={t('login.email')}
-        name="email"
-        rules={[
-          {
-            required: true,
-            message: 'Please enter your email!',
-          },
-          {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
-          },
-        ]}
+    <>
+      <Form
+        labelCol={layout.labelCol}
+        wrapperCol={layout.wrapperCol}
+        className="login__form"
+        name="basic"
+        initialValues={{
+          remember: true,
+        }}
+        layout="vertical"
+        size="large"
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        autoComplete="off"
       >
-        <Input placeholder={t('login.email_placeholder')} />
-      </Form.Item>
-
-      <Form.Item
-        label={t('login.password')}
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: 'Please enter your password!',
-          },
-        ]}
-      >
-        <Input.Password placeholder={t('login.password_placeholder')} />
-      </Form.Item>
-      <Form.Item>
-        <div className="login__form__link">
-          <span>{t('login.not_have_account')}</span>
-          <a onClick={onClickToRegister}>{t('login.register_now')}</a>
-        </div>
-      </Form.Item>
-      <Form.Item>
-        <Button
-          type="primary"
-          htmlType="submit"
-          className="submit__button"
-          loading={loadingButton}
+        <Form.Item
+          label={t('login.email')}
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: 'Please enter your email!',
+            },
+            {
+              type: 'email',
+              message: 'The input is not valid E-mail!',
+            },
+          ]}
         >
-          {t('login.login')}
-        </Button>
-      </Form.Item>
-    </Form>
+          <Input placeholder={t('login.email_placeholder')} />
+        </Form.Item>
+
+        <Form.Item
+          label={t('login.password')}
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Please enter your password!',
+            },
+          ]}
+        >
+          <Input.Password placeholder={t('login.password_placeholder')} />
+        </Form.Item>
+        <Form.Item>
+          <div className="login__form__link">
+            <span>{t('login.not_have_account')}</span>
+            <a onClick={onClickToRegister}>{t('login.register_now')}</a>
+          </div>
+        </Form.Item>
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="submit__button"
+            loading={loadingButton}
+          >
+            {t('login.login')}
+          </Button>
+        </Form.Item>
+      </Form>
+      <Button onClick={() => navigate('/')}>Join as Guest</Button>
+    </>
   );
 };
 

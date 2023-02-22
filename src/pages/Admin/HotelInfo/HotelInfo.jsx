@@ -53,6 +53,8 @@ const UserProfilePage = () => {
     } catch (error) {
       console.log(error);
     }
+
+    console.log(data);
   };
 
   return (
