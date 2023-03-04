@@ -68,8 +68,8 @@ const HotelProfileForm = (props) => {
     );
   };
 
-  const handleChangeImage = async ({ fileList: newFileList }) => {
-    setFileList(await newFileList);
+  const handleChangeImage = ({ fileList: newFileList }) => {
+    setFileList(newFileList);
   };
 
   const uploadButton = (
@@ -88,8 +88,7 @@ const HotelProfileForm = (props) => {
   const [imagesId, setImagesId] = useState([]);
   const [imagesSrc, setImagesSrc] = useState([]);
 
-  const defaultImagesId =
-    hotelData && hotelData.images.map((item) => item.imageId);
+  const defaultImages = hotelData && hotelData.images.map((item) => item);
 
   const handleUploadImage = async (value) => {
     const images = new FormData();
@@ -104,9 +103,18 @@ const HotelProfileForm = (props) => {
   };
 
   const onCreate = (values) => {
+    const commonItems = [];
+    defaultImages.forEach((item1) => {
+      fileList.forEach((item2) => {
+        if (item1.src && item1.src === item2.url) {
+          commonItems.push(item1.imageId);
+        }
+      });
+    });
+
     handleUpdateHotel({
       ...values,
-      images: [...defaultImagesId, ...imagesId],
+      images: [...commonItems, ...imagesId],
       imagesSrc: imagesSrc,
     });
 

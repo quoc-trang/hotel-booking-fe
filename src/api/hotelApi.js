@@ -36,7 +36,7 @@ const hotelApi = {
   uploadImage: (images) => {
     useLocalToken();
     return axiosInstance.post(
-        'https://localhost:8000/api/images',
+        '/images',
         images,
         {
           headers: {
