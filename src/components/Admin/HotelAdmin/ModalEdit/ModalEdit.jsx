@@ -35,8 +35,7 @@ const ModalEdit = ({ visible, onCancel, handleEditRoom, editRoomData }) => {
   const [previewImage, setPreviewImage] = useState('');
   const [previewTitle, setPreviewTitle] = useState('');
 
-  const defaultImagesId =
-    editRoomData && editRoomData.images.map((item) => item.imageId);
+  const defaultImages = editRoomData && editRoomData.images.map((item) => item);
 
   useEffect(() => {
     setData(editRoomData);
@@ -101,6 +100,7 @@ const ModalEdit = ({ visible, onCancel, handleEditRoom, editRoomData }) => {
   );
 
   const [imagesId, setImagesId] = useState([]);
+  const [imagesSrc, setImagesSrc] = useState([]);
 
   const handleUploadImage = async (value) => {
     const images = new FormData();
@@ -108,14 +108,33 @@ const ModalEdit = ({ visible, onCancel, handleEditRoom, editRoomData }) => {
     const response = await roomsApi.uploadImage(images);
     if (response.data.status === 'success') {
       const id = response.data.data[0].id;
+      const src = response.data.data[0].src;
       setImagesId((prev) => [...prev, id]);
+      setImagesSrc((prev) => [...prev, src]);
     }
   };
 
   const onCreate = (values) => {
+    const commonItems = [];
+    defaultImages.forEach((item1) => {
+      fileList.forEach((item2) => {
+        if (item1.src && item1.src === item2.url) {
+          commonItems.push(item1.imageId);
+        }
+      });
+    });
+
+    const imgData = imagesSrc.map((item, index) => {
+      return {
+        id: index,
+        src: item,
+      };
+    });
+
     handleEditRoom({
       ...values,
-      images: [...defaultImagesId, ...imagesId],
+      images: [...commonItems, ...imagesId],
+      imagesSrc: imgData,
     });
 
     setFileList([]);
@@ -126,7 +145,7 @@ const ModalEdit = ({ visible, onCancel, handleEditRoom, editRoomData }) => {
     <>
       <Modal
         width={800}
-        visible={visible}
+        open={visible}
         title="Edit room"
         okText="Update room"
         cancelText="Cancel"

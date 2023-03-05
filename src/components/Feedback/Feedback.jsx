@@ -21,8 +21,6 @@ const FeedBack = ({ hotelId, hotelData }) => {
     getAllFeedback();
   }, [hotelId]);
 
-  console.log(feedback);
-
   const columns = [
     {
       title: 'What customers say about our services',

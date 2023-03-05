@@ -195,7 +195,7 @@ const HotelAdmin = () => {
     setEditVisible(false);
     try {
       const response = await roomsApi.update({
-        ...values,
+        data: values,
         hotelId: id,
         roomId: editRoomData.id,
       });
