@@ -4,6 +4,7 @@ import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { IoBedSharp } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useLoadingContext } from 'react-router-loading';
 
 import { cityApi, hotelApi } from '../../api';
@@ -11,6 +12,18 @@ import { CityIntro, HotelPopulerList, MainSection } from '../../components';
 import './HomePage.scss';
 
 const HomePage = () => {
+  const role = window.localStorage.getItem('role');
+  const hotelId = window.localStorage.getItem('hotelId');
+  console.log(hotelId);
+
+  if (role === 'ROLE_HOTEL') {
+    return <Navigate to={`/manageHotel/${hotelId}`} replace />;
+  }
+
+  if (role === 'ROLE_ADMIN') {
+    return <Navigate to={`/admin`} replace />;
+  }
+
   const loadingContext = useLoadingContext();
   const DATE_FORMAT = 'DD-MM-YYYY';
   const navigate = useNavigate();
