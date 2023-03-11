@@ -14,7 +14,6 @@ import './HomePage.scss';
 const HomePage = () => {
   const role = window.localStorage.getItem('role');
   const hotelId = window.localStorage.getItem('hotelId');
-  console.log(hotelId);
 
   if (role === 'ROLE_HOTEL') {
     return <Navigate to={`/manageHotel/${hotelId}`} replace />;

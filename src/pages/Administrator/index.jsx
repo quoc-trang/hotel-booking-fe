@@ -1,13 +1,20 @@
-import { Button, Popconfirm, Table, Tag } from 'antd';
+import { AndroidOutlined, AppleOutlined } from '@ant-design/icons';
+import { Space, Tabs } from 'antd';
+import { Typography } from 'antd';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 
 import accountApi from '../../api/accountApi';
+import TableAccount from '../../components/Administrator/TableAccount';
+
+const { Title } = Typography;
 
 const Administrator = () => {
   const [accounts, setAccounts] = useState([]);
   const [status, setStatus] = useState(false);
   const [userId, setUserId] = useState();
+  const [userAccounts, setUserAccounts] = useState([]);
+  const [hotelOwnerAccounts, setHotelOwnerAccounts] = useState([]);
 
   useEffect(() => {
     const getAllAccountApi = async () => {
@@ -41,79 +48,53 @@ const Administrator = () => {
     }
   };
 
-  const columns = [
-    {
-      title: 'Id',
-      dataIndex: 'id',
-      key: 'id',
-    },
-    {
-      title: 'Email',
-      dataIndex: 'email',
-      key: 'email',
-      width: '10%',
-    },
-    {
-      title: 'Full Name',
-      dataIndex: 'fullName',
-      key: 'fullName',
-    },
-    {
-      title: 'Phone',
-      dataIndex: 'phone',
-      key: 'phone',
-    },
-    {
-      title: 'Role',
-      dataIndex: 'role',
-      key: 'role',
-    },
-    {
-      title: 'Disabled',
-      dataIndex: 'disabled',
-      key: 'disabled',
-      render: (disabled) => {
-        return disabled ? (
-          <Tag color="green">True</Tag>
-        ) : (
-          <Tag color="red">False</Tag>
-        );
-      },
-    },
-    {
-      title: 'Action',
-      dataIndex: '',
-      key: 'x',
-      // eslint-disable-next-line no-unused-vars
-      render: (_, { record }) => (
-        <>
-          <Popconfirm
-            title="Are you sure?"
-            onConfirm={() => handleOke()}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button
-              onClick={() => {
-                setUserId(_.id);
-                setStatus(_.disabled);
-              }}
-              type="primary"
-            >
-              change status
-            </Button>
-          </Popconfirm>
-        </>
-      ),
-    },
-  ];
+  useEffect(() => {
+    setUserAccounts(accounts.filter((acc) => acc.role === 'ROLE_USER'));
+    setHotelOwnerAccounts(accounts.filter((acc) => acc.role === 'ROLE_HOTEL'));
+  }, [accounts]);
 
   return (
-    <Table
-      loading={accounts.length < 0}
-      dataSource={accounts}
-      columns={columns}
-    />
+    <Space direction="vertical" style={{ padding: '2rem', width: '100%' }}>
+      <Title>Account Management</Title>
+      <Tabs
+        items={[
+          {
+            label: (
+              <span>
+                <AndroidOutlined />
+                Hotel Owner
+              </span>
+            ),
+            key: 'hotel_owner',
+            children: (
+              <TableAccount
+                accounts={hotelOwnerAccounts}
+                handleOke={handleOke}
+                setStatus={setStatus}
+                setUserId={setUserId}
+              />
+            ),
+          },
+          {
+            label: (
+              <span>
+                <AppleOutlined />
+                User
+              </span>
+            ),
+            key: 'user',
+            children: (
+              <TableAccount
+                accounts={userAccounts}
+                handleOke={handleOke}
+                setStatus={setStatus}
+                setUserId={setUserId}
+              />
+            ),
+          },
+        ]}
+      />
+    </Space>
   );
 };
 
