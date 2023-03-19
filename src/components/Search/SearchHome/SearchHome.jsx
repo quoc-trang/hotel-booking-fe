@@ -140,8 +140,8 @@ const SearchHome = (props) => {
                   className="popover__antd"
                   trigger="click"
                   content={content}
-                  visible={visible}
-                  onVisibleChange={handleVisibleChange}
+                  open={visible}
+                  onOpenChange={handleVisibleChange}
                 >
                   <Button
                     className="btn"
@@ -154,12 +154,7 @@ const SearchHome = (props) => {
                   </Button>
                 </Popover>
                 <div className="search__btn">
-                  <Button
-                    className="btn"
-                    size="large"
-                    htmlType="submit"
-                    type="primary"
-                  >
+                  <Button className="btn" size="large" htmlType="submit">
                     <SearchOutlined />
                   </Button>
                 </div>

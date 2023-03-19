@@ -99,7 +99,6 @@ const ProfileForm = () => {
           <div className="profile__form__item">
             <Button
               className="profile__form__button"
-              type="primary"
               htmlType="submit"
               loading={buttonLoading}
             >

@@ -59,7 +59,6 @@ const TableAccount = ({ accounts, handleOke, setUserId, setStatus }) => {
                 setUserId(_.id);
                 setStatus(_.disabled);
               }}
-              type="primary"
             >
               change status
             </Button>

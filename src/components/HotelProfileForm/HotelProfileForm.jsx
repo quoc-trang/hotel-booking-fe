@@ -265,7 +265,7 @@ const HotelProfileForm = (props) => {
             </Modal>
           </Form.Item>
           <Form.Item>
-            <Button type="primary" style={{ width: '100%' }} htmlType="submit">
+            <Button style={{ width: '100%' }} htmlType="submit">
               Update
             </Button>
           </Form.Item>

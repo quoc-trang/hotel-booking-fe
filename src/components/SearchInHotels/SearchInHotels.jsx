@@ -237,12 +237,7 @@ const SearchInHotels = ({
                   </Button>
                 </Popover>
                 <div className="search__btn">
-                  <Button
-                    className="btn"
-                    size="large"
-                    htmlType="submit"
-                    type="primary"
-                  >
+                  <Button className="btn" size="large" htmlType="submit">
                     <SearchOutlined />
                   </Button>
                 </div>

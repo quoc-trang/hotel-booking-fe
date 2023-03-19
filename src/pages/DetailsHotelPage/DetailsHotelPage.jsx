@@ -292,7 +292,7 @@ const DetailsHotelPage = () => {
                       {t('details__hotel.night')}
                     </span>
                   </h1>
-                  <Button onClick={scrollToElement} type="primary">
+                  <Button onClick={scrollToElement}>
                     {t('details__hotel.view__rooms')}
                     <CaretDownOutlined />
                   </Button>

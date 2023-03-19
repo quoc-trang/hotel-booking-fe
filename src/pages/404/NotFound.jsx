@@ -13,7 +13,6 @@ const NotFound = () => {
 
       <Button
         size="large"
-        type="primary"
         className="notfound__btn"
         onClick={() => navigate('/')}
       >

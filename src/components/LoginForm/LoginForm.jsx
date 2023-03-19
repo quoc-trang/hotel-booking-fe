@@ -72,7 +72,6 @@ const LoginForm = ({ onFinish, onFinishFailed, loadingButton }) => {
         </Form.Item>
         <Form.Item>
           <Button
-            type="primary"
             htmlType="submit"
             className="submit__button"
             loading={loadingButton}

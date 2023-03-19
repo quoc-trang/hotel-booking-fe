@@ -26,11 +26,7 @@ const PopConfirm = ({ beds, guests, setVisiblePopover }) => {
       <Form.Item name="guest" label={t('details__hotel.guests')}>
         <InputNumber min={1} />
       </Form.Item>
-      <Button
-        htmlType="submit"
-        onClick={() => setVisiblePopover(false)}
-        type="primary"
-      >
+      <Button htmlType="submit" onClick={() => setVisiblePopover(false)}>
         Submit
       </Button>
     </Form>

@@ -138,7 +138,6 @@ const RoomDetailsModal = (props) => {
                     handleBooking();
                     setIsModalVisible(false);
                   }}
-                  type="primary"
                 >
                   {t('room.reverse_now')}
                 </Button>
@@ -149,7 +148,6 @@ const RoomDetailsModal = (props) => {
                       'You must select date check in, check out first, please!'
                     )
                   }
-                  type="primary"
                 >
                   {t('room.reverse_now')}
                 </Button>

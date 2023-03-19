@@ -171,7 +171,6 @@ const RegisterForm = (props) => {
 
             <Form.Item>
               <Button
-                type="primary"
                 htmlType="submit"
                 className="submit__button"
                 loading={loading}
@@ -189,9 +188,7 @@ const RegisterForm = (props) => {
                 <a onClick={onClickToLogin}>{t('login.login_now')}</a>
               </div>
             </Form.Item>
-            <Button type="primary" onClick={onClickNextStep}>
-              Next
-            </Button>
+            <Button onClick={onClickNextStep}>Next</Button>
           </>
         )}
       </Form>

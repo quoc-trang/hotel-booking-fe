@@ -1,11 +1,9 @@
-import { CaretDownOutlined } from '@ant-design/icons';
 import { Button, Col, Image, Row, Steps, Tag } from 'antd';
 import moment from 'moment';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { BiTimeFive } from 'react-icons/bi';
 import { BsFillCalendarDateFill, BsFillPeopleFill } from 'react-icons/bs';
-import { FaBed } from 'react-icons/fa';
 import { GiNotebook } from 'react-icons/gi';
 import { ImNotification } from 'react-icons/im';
 import { IoBedSharp } from 'react-icons/io5';
@@ -351,11 +349,7 @@ const CheckoutPageConfirmation = () => {
                       <p>
                         <i>*{t('checkout.noti_repay')}</i>
                       </p>
-                      <Button
-                        onClick={handleRepay}
-                        type="primary"
-                        loading={loading}
-                      >
+                      <Button onClick={handleRepay} loading={loading}>
                         {t('checkout.repay_now')}
                       </Button>
                     </div>

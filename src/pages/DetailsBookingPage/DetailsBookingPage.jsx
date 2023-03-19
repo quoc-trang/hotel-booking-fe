@@ -324,11 +324,7 @@ const CheckoutPageConfirmation = () => {
                             complete the payment in time
                           </i>
                         </p>
-                        <Button
-                          onClick={handleRepay}
-                          type="primary"
-                          loading={loading}
-                        >
+                        <Button onClick={handleRepay} loading={loading}>
                           Purchase now
                         </Button>
                       </div>

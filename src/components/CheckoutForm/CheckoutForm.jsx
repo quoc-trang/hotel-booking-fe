@@ -105,7 +105,6 @@ const CheckoutForm = (props) => {
         </div>
         <Button
           className="checkout__form__button"
-          type="primary"
           htmlType="submit"
           loading={loading}
         >

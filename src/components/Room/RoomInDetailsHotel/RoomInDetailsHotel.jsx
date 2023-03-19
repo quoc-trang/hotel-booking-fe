@@ -39,7 +39,6 @@ const RoomInDetailsHotel = ({ room, showModal }) => {
         <Button
           onClick={() => showModal(room.id)}
           icon={<CaretRightOutlined />}
-          type="primary"
         >
           {t('details__hotel.view_details')}
         </Button>

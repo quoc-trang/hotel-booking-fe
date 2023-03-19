@@ -127,7 +127,6 @@ const HotelAdmin = () => {
           <Space size="middle">
             <Button
               className="primary__button"
-              type="primary"
               ghost
               onClick={() => onClickEdit(id)}
             >
@@ -269,7 +268,6 @@ const HotelAdmin = () => {
             <Col>
               <Button
                 onClick={() => setAddVisible(true)}
-                type="primary"
                 icon={<PlusOutlined />}
               >
                 {t('admin.add_room')}

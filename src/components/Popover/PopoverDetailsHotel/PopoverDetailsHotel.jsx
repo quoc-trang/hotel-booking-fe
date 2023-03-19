@@ -30,11 +30,7 @@ const PopoverDetailsHotel = ({
       <Form.Item name="bed" label={t('details__hotel.beds')}>
         <InputNumber min={1} />
       </Form.Item>
-      <Button
-        htmlType="submit"
-        onClick={() => setVisiblePopover(false)}
-        type="primary"
-      >
+      <Button htmlType="submit" onClick={() => setVisiblePopover(false)}>
         Submit
       </Button>
     </Form>
