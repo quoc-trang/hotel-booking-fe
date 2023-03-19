@@ -2,7 +2,7 @@ import { UserOutlined } from '@ant-design/icons';
 import { Button, Select } from 'antd';
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import englandIcon from '../../../../assets/images/englandIcon.jpg';
 import vietnamIcon from '../../../../assets/images/vietnamIcon.png';
@@ -23,8 +23,8 @@ const HeaderNavAdmin = () => {
       key: 'en',
       value: 'en',
       label: (
-        <div>
-          <img src={englandIcon} alt="" style={{ width: '20px' }} />
+        <div className="pt-2">
+          <img src={englandIcon} alt="" className="w-5" />
         </div>
       ),
     },
@@ -32,8 +32,8 @@ const HeaderNavAdmin = () => {
       key: 'vi',
       value: 'vi',
       label: (
-        <div>
-          <img src={vietnamIcon} alt="" style={{ width: '20px' }} />
+        <div className="pt-2">
+          <img src={vietnamIcon} alt="" className="w-5" />
         </div>
       ),
     },
@@ -51,33 +51,40 @@ const HeaderNavAdmin = () => {
   const defaultLanguage = window.localStorage.getItem('lng');
 
   return (
-    <div className="navbar__header__wrapper">
-      <Select
-        defaultValue={
-          i18n.language === 'en' ? languageOptions[0] : languageOptions[1]
-        }
-        options={languageOptions}
-        onChange={changeLanguage}
-      />
-      {accessToken ? (
-        <Button
-          type="link"
-          style={{ margin: '0 10px' }}
-          icon={<UserOutlined />}
-        >
-          <UserControl />
-        </Button>
-      ) : (
-        <Link to="/login">
+    <div className="flex h-full w-full justify-between items-center">
+      <div className="">
+        <NavLink to="/">
+          <h1 className="text-xl font-bold text-orange-400">tranq.</h1>
+        </NavLink>
+      </div>
+      <div className="flex items-center">
+        <Select
+          defaultValue={
+            i18n.language === 'en' ? languageOptions[0] : languageOptions[1]
+          }
+          options={languageOptions}
+          onChange={changeLanguage}
+        />
+        {accessToken ? (
           <Button
             type="link"
-            style={{ margin: '0 10px' }}
+            className="flex items-center"
             icon={<UserOutlined />}
           >
-            {t('navbar.login')}
+            <UserControl />
           </Button>
-        </Link>
-      )}
+        ) : (
+          <Link to="/login">
+            <Button
+              type="link"
+              className="flex items-center"
+              icon={<UserOutlined />}
+            >
+              {t('navbar.login')}
+            </Button>
+          </Link>
+        )}
+      </div>
     </div>
   );
 };

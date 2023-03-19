@@ -95,7 +95,7 @@ const UserControl = () => {
 
   return (
     <Dropdown overlay={menu} trigger={['click']}>
-      <span>{userData.fullName}</span>
+      <span className="pt-1">{userData.fullName}</span>
     </Dropdown>
   );
 };

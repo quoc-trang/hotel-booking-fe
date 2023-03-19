@@ -6,12 +6,12 @@ import './index.scss';
 
 const NavbarAdmin = () => {
   return (
-    <>
+    <div className="block">
       <div className="navbar__wrapper">
         <SiderNavAdmin />
       </div>
       <HeaderNavAdmin />
-    </>
+    </div>
   );
 };
 

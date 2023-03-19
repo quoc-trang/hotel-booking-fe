@@ -3,7 +3,7 @@
   left: 0;
   top: 0;
   height: 100vh;
-  width: 5rem;
+  width: 14rem;
   border-right: 1px solid #d9e2e8;
   display: flex;
   flex-direction: column;
@@ -36,10 +36,12 @@
     a:hover {
       background-color: #f0f3f5;
       color: #181d20;
+
       .link {
         .icon {
           color: #181d20;
         }
+
         .text__icon {
           color: #181d20;
         }
@@ -48,10 +50,12 @@
 
     a.active {
       background-color: #f0f3f5;
+
       .icon {
         color: #192024;
         font-weight: bold;
       }
+
       .text__icon {
         color: #192024;
         font-weight: bold;
@@ -61,6 +65,7 @@
     &:first-child {
       margin-top: 20px;
     }
+
     &:last-child {
       margin-top: 5px;
     }
@@ -69,29 +74,20 @@
       height: 2rem;
       display: flex;
       align-items: center;
+
       .icon {
         font-size: 20px;
         color: #8796a1;
         transition: 0.3s;
+        margin-right: 10px;
       }
+
       .text__icon {
         transition: 0.3s;
         margin-left: 10px;
         display: none;
         color: #8796a1;
         transition: 0.3s;
-      }
-    }
-  }
-
-  &:hover {
-    width: 14rem;
-
-    .link {
-      .icon {
-        margin-right: 10px;
-      }
-      .text__icon {
         display: inline-block;
       }
     }
@@ -104,7 +100,6 @@
   background-color: white;
   z-index: 99;
   box-shadow: 0 2px 8px 0 rgb(175, 174, 183);
-  // border-bottom: 1px solid #d9e2e8;
   display: flex;
   top: 0;
   height: 79px;
@@ -115,6 +110,7 @@
     padding-left: 6rem;
     padding-top: 12px;
     top: 50%;
+
     span {
       color: var(--primary-color);
     }

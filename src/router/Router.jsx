@@ -21,6 +21,7 @@ import {
   RoomDetail,
   UserProfilePage,
 } from '../pages';
+import Booking from '../pages/Admin/Booking';
 import Administrator from '../pages/Administrator';
 
 const hist = createBrowserHistory();
@@ -56,6 +57,7 @@ const Router = () => {
           <Route path="rooms" element={<HotelManagement />} loading />
           <Route path="rooms/:roomId" element={<RoomDetail />} loading />
           <Route path="profile" element={<HotelInfo />} loading />
+          <Route path="booking" element={<Booking />} loading />
         </Route>
 
         <Route path="/admin" element={<AdministratorLayout />} loading>

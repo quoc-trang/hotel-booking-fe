@@ -1,4 +1,4 @@
-import { Col, Form, Row, Spin, message } from 'antd';
+import { Card, Col, Form, Row, Spin, message } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { useLoadingContext } from 'react-router-loading';
 
@@ -57,24 +57,26 @@ const UserProfilePage = () => {
 
   return (
     <Spin spinning={loading}>
-      <div className="hotel__profile__container">
-        <div className="hotel__profile__wrapper">
-          <section className="hotel__profile__content ctn">
-            <Row gutter={[16, 0]} style={{ justifyContent: 'center' }}>
-              <Col lg={24} md={24} sm={24} xs={24}>
-                <div className="checkout__content__form">
-                  <HotelProfileForm
-                    form={form}
-                    handleUpdateHotel={handleSubmitForm}
-                    userData={userData}
-                    hotelData={hotelData}
-                  />
-                </div>
-              </Col>
-            </Row>
-          </section>
+      <Card className="px-10" title="Hotel Details">
+        <div className="hotel__profile__container">
+          <div className="hotel__profile__wrapper">
+            <section className="hotel__profile__content ctn">
+              <Row gutter={[16, 0]} style={{ justifyContent: 'center' }}>
+                <Col lg={24} md={24} sm={24} xs={24}>
+                  <div className="checkout__content__form">
+                    <HotelProfileForm
+                      form={form}
+                      handleUpdateHotel={handleSubmitForm}
+                      userData={userData}
+                      hotelData={hotelData}
+                    />
+                  </div>
+                </Col>
+              </Row>
+            </section>
+          </div>
         </div>
-      </div>
+      </Card>
     </Spin>
   );
 };

@@ -1,3 +1,4 @@
+import { Card } from 'antd';
 import React from 'react';
 
 import { HotelAdmin } from '../../../components';
@@ -5,14 +6,15 @@ import './HotelManagement.scss';
 
 const HotelManagement = () => {
   return (
-    <div
+    <Card
+      title="Rooms Management"
       style={{
         padding: '16px',
         minHeight: '100vh',
       }}
     >
       <HotelAdmin />
-    </div>
+    </Card>
   );
 };
 
