@@ -60,7 +60,7 @@ const Administrator = () => {
         items={[
           {
             label: (
-              <span>
+              <span className="flex items-center">
                 <AndroidOutlined />
                 Hotel Owner
               </span>
@@ -77,7 +77,7 @@ const Administrator = () => {
           },
           {
             label: (
-              <span>
+              <span className="flex items-center">
                 <AppleOutlined />
                 User
               </span>

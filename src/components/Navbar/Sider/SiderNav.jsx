@@ -60,13 +60,6 @@ const SiderNav = () => {
           </NavLink>
         </Space>
       </div>
-      <div className="navbar__logo__wrapper">
-        <NavLink to="/">
-          <h1>
-            yourhome<span>29.</span>{' '}
-          </h1>
-        </NavLink>
-      </div>
     </>
   );
 };

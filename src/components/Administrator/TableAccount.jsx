@@ -1,4 +1,4 @@
-import { Button, Popconfirm, Table, Tag } from 'antd';
+import { Button, Card, Popconfirm, Table, Tag } from 'antd';
 import React from 'react';
 
 const TableAccount = ({ accounts, handleOke, setUserId, setStatus }) => {
@@ -69,11 +69,13 @@ const TableAccount = ({ accounts, handleOke, setUserId, setStatus }) => {
   ];
 
   return (
-    <Table
-      loading={accounts.length < 0}
-      dataSource={accounts}
-      columns={columns}
-    />
+    <Card>
+      <Table
+        loading={accounts.length < 0}
+        dataSource={accounts}
+        columns={columns}
+      />
+    </Card>
   );
 };
 

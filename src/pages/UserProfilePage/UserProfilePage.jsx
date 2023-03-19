@@ -39,72 +39,80 @@ const UserProfilePage = () => {
 
   return (
     <Spin spinning={loading}>
-      <div className="profile__container">
-        <div className="profile__wrapper">
-          <div style={{ height: '5vh' }} />
-          <section className="profile__content ctn">
-            <Card>
-              <Row gutter={[0, 10]}>
-                <Col className="profile__content__image" xl={24} lg={24}>
-                  <Avatar size={150} src="https://picsum.photos/200/300" />
-                </Col>
-              </Row>
-            </Card>
-          </section>
-          <Tabs defaultActiveKey="1" className="ctn">
-            <TabPane
-              tab={
-                <span>
-                  <UserOutlined />
-                  Profile
-                </span>
-              }
-              key="1"
-            >
-              <Row gutter={[16, 0]}>
-                <Col lg={16} md={24} sm={24} xs={24}>
-                  <div className="checkout__content__form">
-                    <ProfileForm />
-                  </div>
-                </Col>
-                <Col lg={7} md={24} sm={24} xs={24} style={{ paddingTop: 15 }}>
-                  <div className="profile__content__summary">
-                    <div className="profile__content__summary__list">
-                      <div className="profile__content__summary__item">
-                        <span>{t('profile.not_trip')}</span>
+      <Card title="User Details">
+        <div className="profile__container">
+          <div className="profile__wrapper">
+            <div style={{ height: '5vh' }} />
+            <section className="profile__content ctn">
+              <Card>
+                <Row gutter={[0, 10]}>
+                  <Col className="profile__content__image" xl={24} lg={24}>
+                    <Avatar size={150} src="https://picsum.photos/200/300" />
+                  </Col>
+                </Row>
+              </Card>
+            </section>
+            <Tabs defaultActiveKey="1" className="ctn">
+              <TabPane
+                tab={
+                  <span>
+                    <UserOutlined />
+                    Profile
+                  </span>
+                }
+                key="1"
+              >
+                <Row gutter={[16, 0]}>
+                  <Col lg={16} md={24} sm={24} xs={24}>
+                    <div className="checkout__content__form">
+                      <ProfileForm />
+                    </div>
+                  </Col>
+                  <Col
+                    lg={7}
+                    md={24}
+                    sm={24}
+                    xs={24}
+                    style={{ paddingTop: 15 }}
+                  >
+                    <div className="profile__content__summary">
+                      <div className="profile__content__summary__list">
+                        <div className="profile__content__summary__item">
+                          <span>{t('profile.not_trip')}</span>
+                        </div>
+                        <div className="profile__content__summary__item">
+                          <span>
+                            <Link to="/">{t('profile.find_trip')}</Link>
+                          </span>
+                        </div>
+                        <div className="profile__content__summary__item">
+                          <span>
+                            <a>{t('profile.top_faq')}</a>
+                          </span>
+                        </div>
                       </div>
-                      <div className="profile__content__summary__item">
-                        <span>
-                          <Link to="/">{t('profile.find_trip')}</Link>
-                        </span>
-                      </div>
-                      <div className="profile__content__summary__item">
-                        <span>
-                          <a>{t('profile.top_faq')}</a>
-                        </span>
+                      <div className="profile__content__summary__total">
+                        <span>{t('profile.need_help')}</span>
                       </div>
                     </div>
-                    <div className="profile__content__summary__total">
-                      <span>{t('profile.need_help')}</span>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </TabPane>
-            <TabPane
-              tab={
-                <span>
-                  <TransactionOutlined />
-                  History
-                </span>
-              }
-              key="2"
-            >
-              {bookings && <Transaction bookings={bookings} />}
-            </TabPane>
-          </Tabs>
+                  </Col>
+                </Row>
+              </TabPane>
+              <TabPane
+                tab={
+                  <span>
+                    <TransactionOutlined />
+                    History
+                  </span>
+                }
+                key="2"
+              >
+                {bookings && <Transaction bookings={bookings} />}
+              </TabPane>
+            </Tabs>
+          </div>
         </div>
-      </div>
+      </Card>
     </Spin>
   );
 };

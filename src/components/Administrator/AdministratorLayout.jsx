@@ -1,8 +1,10 @@
+import { Layout } from 'antd';
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useLoadingContext } from 'react-router-loading';
 
-import Navbar from '../Navbar/Navbar';
+import HeaderAdministrator from './HeaderAdministrator';
+import SiderAdministrator from './SiderAdministrator';
 
 const AdministratorLayout = () => {
   const role = window.localStorage.getItem('role');
@@ -14,14 +16,22 @@ const AdministratorLayout = () => {
   }
   const loadingContext = useLoadingContext();
 
+  const { Header, Sider, Content } = Layout;
   loadingContext.done();
   return (
-    <div>
-      <Navbar />
-      <div style={{ paddingLeft: '5rem', paddingTop: '79px' }}>
-        <Outlet />
-      </div>
-    </div>
+    <Layout>
+      <Sider className="min-h-screen">
+        <SiderAdministrator />
+      </Sider>
+      <Layout>
+        <Header>
+          <HeaderAdministrator />
+        </Header>
+        <Content>
+          <Outlet />
+        </Content>
+      </Layout>
+    </Layout>
   );
 };
 

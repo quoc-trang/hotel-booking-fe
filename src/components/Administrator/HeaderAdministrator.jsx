@@ -4,12 +4,11 @@ import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, NavLink } from 'react-router-dom';
 
-import usa from '../../../assets/images/usa.svg';
-import vietnamIcon from '../../../assets/images/vietnamIcon.png';
-import UserControl from '../../UserControl/UserControl';
-import './index.scss';
+import englandIcon from '../../assets/images/englandIcon.jpg';
+import vietnamIcon from '../../assets/images/vietnamIcon.png';
+import UserControl from '../UserControl/UserControl';
 
-const HeaderNav = () => {
+const HeaderAdministrator = () => {
   const { t, i18n } = useTranslation();
 
   const userData = window.localStorage.getItem('userData')
@@ -24,7 +23,7 @@ const HeaderNav = () => {
       value: 'en',
       label: (
         <div className="pt-2">
-          <img src={usa} alt="" className="w-5" />
+          <img src={englandIcon} alt="" className="w-5" />
         </div>
       ),
     },
@@ -51,10 +50,12 @@ const HeaderNav = () => {
   const defaultLanguage = window.localStorage.getItem('lng');
 
   return (
-    <div className="flex h-full justify-between items-center">
-      <NavLink to="/">
-        <h1 className="font-bold text-xl">tranq.</h1>
-      </NavLink>
+    <div className="flex h-full w-full justify-between items-center">
+      <div className="">
+        <NavLink to="/">
+          <h1 className="text-xl font-bold text-orange-400">tranq.</h1>
+        </NavLink>
+      </div>
       <div className="flex items-center">
         <Select
           defaultValue={
@@ -78,7 +79,7 @@ const HeaderNav = () => {
               className="flex items-center"
               icon={<UserOutlined />}
             >
-              <span className="pt-1">{t('navbar.login')}</span>
+              {t('navbar.login')}
             </Button>
           </Link>
         )}
@@ -87,4 +88,4 @@ const HeaderNav = () => {
   );
 };
 
-export default HeaderNav;
+export default HeaderAdministrator;

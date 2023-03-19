@@ -1,4 +1,4 @@
-import { Divider, Layout } from 'antd';
+import { Layout } from 'antd';
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useLoadingContext } from 'react-router-loading';
