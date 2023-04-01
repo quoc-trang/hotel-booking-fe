@@ -134,6 +134,7 @@ const RoomDetailsModal = (props) => {
             <div className="booking__button">
               {dataOrder.checkIn && dataOrder.checkOut ? (
                 <Button
+                  className="!text-orange-500"
                   onClick={() => {
                     handleBooking();
                     setIsModalVisible(false);
@@ -143,6 +144,7 @@ const RoomDetailsModal = (props) => {
                 </Button>
               ) : (
                 <Button
+                  className="!text-orange-500"
                   onClick={() =>
                     message.error(
                       'You must select date check in, check out first, please!'
