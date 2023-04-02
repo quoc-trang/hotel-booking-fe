@@ -104,13 +104,15 @@ const HotelProfileForm = (props) => {
 
   const onCreate = (values) => {
     const commonItems = [];
-    defaultImages.forEach((item1) => {
-      fileList.forEach((item2) => {
-        if (item1.src && item1.src === item2.url) {
-          commonItems.push(item1.imageId);
-        }
+    if (defaultImages.length) {
+      defaultImages.forEach((item1) => {
+        fileList.forEach((item2) => {
+          if (item1.src && item1.src === item2.url) {
+            commonItems.push(item1.imageId);
+          }
+        });
       });
-    });
+    }
 
     handleUpdateHotel({
       ...values,
