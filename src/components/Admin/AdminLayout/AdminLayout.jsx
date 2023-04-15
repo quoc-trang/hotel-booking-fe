@@ -7,7 +7,7 @@ import HeaderNavAdmin from '../Navbar/HeaderNavAdmin/HeaderNavAdmin';
 import SiderNavAdmin from '../Navbar/SiderNavAdmin/SiderNavAdmin';
 
 const AdminLayout = () => {
-  const role = window.localStorage.getItem('role');
+  const role = window.sessionStorage.getItem('role');
 
   if (role !== 'ROLE_HOTEL') {
     return <Navigate to="/login" replace />;

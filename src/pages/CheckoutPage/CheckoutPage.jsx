@@ -25,7 +25,7 @@ const CheckoutPage = () => {
   const [form] = Form.useForm();
   const bookingData = useSelector((state) => state.booking.orders.checkIn)
     ? useSelector((state) => state.booking.orders)
-    : JSON.parse(localStorage.getItem('bookingData'));
+    : JSON.parse(sessionStorage.getItem('bookingData'));
 
   const [loading, setLoading] = useState(false);
   const { t, i18n } = useTranslation();
@@ -45,7 +45,7 @@ const CheckoutPage = () => {
 
   const tax = subTotal * 0.1;
 
-  const userData = JSON.parse(localStorage.getItem('userData'));
+  const userData = JSON.parse(sessionStorage.getItem('userData'));
 
   useEffect(() => {
     window.scrollTo(0, 0);

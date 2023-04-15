@@ -15,7 +15,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: localStorage.getItem('lng') === "vi" ? 'vi' : 'en',
+  lng: sessionStorage.getItem('lng') === "vi" ? 'vi' : 'en',
   fallbackLng: 'en',
   supportedLngs: ['en', 'vi'],
   interpolation: {

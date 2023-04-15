@@ -13,7 +13,7 @@ const UserProfilePage = () => {
 
   const [form] = Form.useForm();
 
-  const userData = JSON.parse(window.localStorage.getItem('userData'));
+  const userData = JSON.parse(window.sessionStorage.getItem('userData'));
 
   const getHotel = async (id) => {
     const response = await hotelApi.getById(id);

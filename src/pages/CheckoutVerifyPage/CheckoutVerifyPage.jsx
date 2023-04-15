@@ -28,7 +28,7 @@ const CheckoutVerifyPage = () => {
             payment: response.data.data.paymentInfo,
           })
         );
-        window.localStorage.setItem(
+        window.sessionStorage.setItem(
           'confirmation',
           JSON.stringify({
             booking: response.data.data.booking,

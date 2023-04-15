@@ -30,10 +30,10 @@ const LoginPage = () => {
       const role = await response.data.data.role;
 
       if (status === 'success') {
-        localStorage.setItem('userData', JSON.stringify(data.data));
-        localStorage.setItem('token', data.data.token);
-        localStorage.setItem('role', role);
-        localStorage.setItem('hotelId', data.data.hotelId);
+        sessionStorage.setItem('userData', JSON.stringify(data.data));
+        sessionStorage.setItem('token', data.data.token);
+        sessionStorage.setItem('role', role);
+        sessionStorage.setItem('hotelId', data.data.hotelId);
         setLoadingButton(false);
         useLocalToken();
         if (role === 'ROLE_HOTEL') {

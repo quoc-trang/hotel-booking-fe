@@ -42,9 +42,9 @@ const RoomDetailsModal = (props) => {
   const currentLanguage = i18n.language;
 
   const handleBooking = () => {
-    if (localStorage.getItem('userData')) {
+    if (sessionStorage.getItem('userData')) {
       dispach(addOrder(orderData));
-      window.localStorage.setItem('bookingData', JSON.stringify(dataOrder));
+      window.sessionStorage.setItem('bookingData', JSON.stringify(dataOrder));
       navigate('/checkout');
     } else {
       navigate('/login', { state: `hotels/${hotelId}` });

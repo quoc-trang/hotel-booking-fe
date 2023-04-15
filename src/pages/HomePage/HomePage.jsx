@@ -12,8 +12,8 @@ import { CityIntro, HotelPopulerList, MainSection } from '../../components';
 import './HomePage.scss';
 
 const HomePage = () => {
-  const role = window.localStorage.getItem('role');
-  const hotelId = window.localStorage.getItem('hotelId');
+  const role = window.sessionStorage.getItem('role');
+  const hotelId = window.sessionStorage.getItem('hotelId');
 
   if (role === 'ROLE_HOTEL') {
     return <Navigate to={`/manageHotel/${hotelId}`} replace />;

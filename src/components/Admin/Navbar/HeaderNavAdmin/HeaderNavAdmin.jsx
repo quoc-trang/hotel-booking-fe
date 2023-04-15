@@ -12,8 +12,8 @@ import './index.scss';
 const HeaderNavAdmin = () => {
   const { t, i18n } = useTranslation();
 
-  const userData = window.localStorage.getItem('userData')
-    ? JSON.parse(window.localStorage.getItem('userData'))
+  const userData = window.sessionStorage.getItem('userData')
+    ? JSON.parse(window.sessionStorage.getItem('userData'))
     : '';
 
   const accessToken = userData.token;
@@ -45,10 +45,10 @@ const HeaderNavAdmin = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem('lng', lng);
+    sessionStorage.setItem('lng', lng);
   };
 
-  const defaultLanguage = window.localStorage.getItem('lng');
+  const defaultLanguage = window.sessionStorage.getItem('lng');
 
   return (
     <div className="flex h-full w-full justify-between items-center">

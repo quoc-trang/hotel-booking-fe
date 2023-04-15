@@ -7,7 +7,7 @@ import HeaderAdministrator from './HeaderAdministrator';
 import SiderAdministrator from './SiderAdministrator';
 
 const AdministratorLayout = () => {
-  const role = window.localStorage.getItem('role');
+  const role = window.sessionStorage.getItem('role');
 
   if (role !== 'ROLE_ADMIN') {
     return <Navigate to="/login" replace />;

@@ -7,8 +7,8 @@ import { NavLink } from 'react-router-dom';
 import './index.scss';
 
 const SiderNav = () => {
-  const userData = window.localStorage.getItem('userData')
-    ? JSON.parse(window.localStorage.getItem('userData'))
+  const userData = window.sessionStorage.getItem('userData')
+    ? JSON.parse(window.sessionStorage.getItem('userData'))
     : '';
 
   window.addEventListener('scroll', () => {

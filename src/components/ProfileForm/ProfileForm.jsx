@@ -13,7 +13,7 @@ const ProfileForm = () => {
 
   const { t } = useTranslation();
   const [userData, setUserData] = useState(
-    JSON.parse(localStorage.getItem('userData'))
+    JSON.parse(sessionStorage.getItem('userData'))
   );
   const [isLoading, setIsLoading] = useState(false);
   const [buttonLoading, setButtonLoading] = useState(false);

@@ -12,7 +12,7 @@ import { profileApi } from '../../api/profileApi';
 
 const UserControl = () => {
   const [userData, setUserData] = useState(
-    JSON.parse(window.localStorage.getItem('userData'))
+    JSON.parse(window.sessionStorage.getItem('userData'))
   );
 
   useEffect(() => {
@@ -26,12 +26,12 @@ const UserControl = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const userRole = localStorage.getItem('role');
-  const hotelId = localStorage.getItem('hotelId');
+  const userRole = sessionStorage.getItem('role');
+  const hotelId = sessionStorage.getItem('hotelId');
 
   const logout = () => {
     location.reload();
-    window.localStorage.clear();
+    window.sessionStorage.clear();
   };
 
   const menu =

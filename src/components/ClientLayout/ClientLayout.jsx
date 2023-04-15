@@ -7,7 +7,7 @@ import HeaderNav from '../Navbar/Header/HeaderNav';
 import SiderNav from '../Navbar/Sider/SiderNav';
 
 const ClientLayout = () => {
-  const role = window.localStorage.getItem('role');
+  const role = window.sessionStorage.getItem('role');
 
   if (role !== 'ROLE_USER') {
     return <Navigate to="/" replace />;
