@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-loading';
 import { AdminLayout, ClientLayout, GuestLayout } from '../components';
 import AdministratorLayout from '../components/Administrator/AdministratorLayout';
 import {
+  AdminLoginPage,
   CheckoutConfirmationPage,
   CheckoutPage,
   CheckoutVerifyPage,
@@ -14,6 +15,7 @@ import {
   HomePage,
   HotelInCityPage,
   HotelInfo,
+  HotelLoginPage,
   HotelManagement,
   LoginPage,
   NotFoundPage,
@@ -65,6 +67,8 @@ const Router = () => {
         </Route>
 
         <Route path="/login" element={<LoginPage />} loading />
+        <Route path="/hotel/login" element={<HotelLoginPage />} loading />
+        <Route path="/admin/login" element={<AdminLoginPage />} loading />
         <Route path="/register" element={<RegisterPage />} loading />
         <Route
           path="/checkoutVerify"

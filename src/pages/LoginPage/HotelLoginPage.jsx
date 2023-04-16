@@ -1,22 +1,21 @@
 import { message } from 'antd';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useLoadingContext } from 'react-router-loading';
 
 import { loginApi } from '../../api';
 import useLocalToken from '../../api/helpers';
-import { LoginForm } from '../../components';
+import { HotelLoginForm } from '../../components';
 import './LoginPage.scss';
 
-const LoginPage = () => {
+const HotelLoginPage = () => {
   const loadingContext = useLoadingContext();
 
   const [loadingButton, setLoadingButton] = useState(false);
   const { t } = useTranslation();
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   const onFinish = async (values) => {
     setLoadingButton(true);
@@ -36,15 +35,9 @@ const LoginPage = () => {
         sessionStorage.setItem('hotelId', data.data.hotelId);
         setLoadingButton(false);
         useLocalToken();
-        if (role === 'ROLE_USER') {
+        if (role === 'ROLE_HOTEL') {
           message.success('Login successfully');
-          if (location.state) {
-            const prePage = location.state;
-            const hotelId = prePage.slice(7);
-            navigate(`/hotels/${hotelId}`, { replace: true });
-          } else {
-            navigate('/');
-          }
+          navigate(`/manageHotel/${response.data.data.hotelId}`);
         } else {
           message.error('Email or password is invalid!!!');
         }
@@ -62,10 +55,10 @@ const LoginPage = () => {
   loadingContext.done();
 
   return (
-    <div className="login__container">
-      <div className="login__wrapper">
-        <h2 className="login__form__title">{t('login.login')}</h2>
-        <LoginForm
+    <div className="login__container login__hotel__container">
+      <div className="login__wrapper opacity-90 bg-yellow-50">
+        <h2 className="login__form__title">{t('login.hotel_login')}</h2>
+        <HotelLoginForm
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           loadingButton={loadingButton}
@@ -75,4 +68,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default HotelLoginPage;

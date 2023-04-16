@@ -27,7 +27,9 @@
     "not_have_account": "Chưa có tài khoản?",
     "already_have_account": "Bạn đã có tài khoản?",
     "register_now": "Đăng kí ngay!",
-    "login_now": "Đăng nhập ngay!"
+    "login_now": "Đăng nhập ngay!",
+    "hotel_login": "Đăng nhập chủ khách sạn",
+    "admin_login": "Đăng nhập nhà quản trị"
   },
 
   "hotels": {

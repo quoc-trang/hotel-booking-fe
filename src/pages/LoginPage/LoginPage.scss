@@ -24,6 +24,14 @@
     border-radius: 10px;
     overflow: hidden;
   }
+
+  &__admin__container {
+    background-image: url('../../assets//images/admin_login_background.jpg');
+  }
+
+  &__hotel__container {
+    background-image: url('../../assets//images/hotel_login_background.jpg');
+  }
 }
 
 @media screen and (max-width: 550px) {

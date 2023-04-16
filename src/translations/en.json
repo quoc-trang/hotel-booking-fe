@@ -27,7 +27,9 @@
     "not_have_account": "Do not have account?",
     "already_have_account": "You already have an account?",
     "register_now": "Register now!",
-    "login_now": "Login now!"
+    "login_now": "Login now!",
+    "hotel_login": "Hotel Login",
+    "admin_login": "Admin Login"
   },
 
   "hotels": {
