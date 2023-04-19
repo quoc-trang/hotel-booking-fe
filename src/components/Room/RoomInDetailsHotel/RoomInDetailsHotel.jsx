@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { CaretRightOutlined } from '@ant-design/icons';
-import { Button, Col, Image, Row, Space } from 'antd';
+import { Button, Col, Row, Space } from 'antd';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 

@@ -23,8 +23,8 @@ const RoomDetailsModal = (props) => {
     dataOrder,
     setIsModalVisible,
     hotelId,
+    disabled,
   } = props;
-
   const navigate = useNavigate();
   const [bigImage, setBigImage] = useState(roomImages[0]);
   const [orderData, setOrderData] = useState(dataOrder);
@@ -52,7 +52,7 @@ const RoomDetailsModal = (props) => {
   };
   return (
     <Modal
-      visible={isModalVisible}
+      open={isModalVisible}
       onOk={handleOk}
       onCancel={handleCancel}
       className="room__details__container"
@@ -134,6 +134,7 @@ const RoomDetailsModal = (props) => {
             <div className="booking__button">
               {dataOrder.checkIn && dataOrder.checkOut ? (
                 <Button
+                  disabled={disabled}
                   className="!text-orange-500"
                   onClick={() => {
                     handleBooking();
@@ -144,6 +145,7 @@ const RoomDetailsModal = (props) => {
                 </Button>
               ) : (
                 <Button
+                  disabled={disabled}
                   className="!text-orange-500"
                   onClick={() =>
                     message.error(

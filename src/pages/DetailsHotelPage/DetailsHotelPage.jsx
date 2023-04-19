@@ -44,10 +44,11 @@ const DetailsHotelPage = () => {
 
   const [hotelData, setHotelData] = useState({});
   const [loadingHotel, setLoadingHotel] = useState(false);
-  const [roomData, setRoomData] = useState({});
+  const [roomData, setRoomData] = useState([]);
   const [loadingRooms, setLoadingRooms] = useState(false);
   const [selectedRoom, setSelectedRoom] = useState({});
   const [roomImages, setRoomImages] = useState([]);
+  const [disabled, setDisabled] = useState(false);
 
   const { t, i18n } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -64,6 +65,9 @@ const DetailsHotelPage = () => {
         : moment().add(3, 'day')
     ),
   ]);
+
+  const [allRoom, setAllRoom] = useState([]);
+  const [roomBooked, setRoomBooked] = useState([]);
 
   const [adults, setAdults] = useState(
     searchParams.get('adults') ? searchParams.get('adults') : 1
@@ -103,6 +107,7 @@ const DetailsHotelPage = () => {
       setLoadingRooms(false);
     }
   };
+
   const [dataOrder, setDataOrder] = useState({
     checkIn: parseInt(moment(date[0]).format('X')),
     checkOut: parseInt(moment(date[1]).format('X')),
@@ -124,6 +129,22 @@ const DetailsHotelPage = () => {
     }
   };
 
+  const getAllRoom = async () => {
+    const date = [
+      moment('02-07-2000').format('X'),
+      moment('08-02-2000').format('X'),
+    ];
+    const { data } = await roomsApi.getAll({ id, date });
+    data && setAllRoom(data.data.rooms);
+  };
+
+  const getRoomBooked = () => {
+    const roomId = roomData ? roomData.map((room) => room.id) : [];
+    const roomBookedMapped =
+      allRoom.filter(({ id }) => !roomId.includes(id)) ?? [];
+    setRoomBooked(roomBookedMapped);
+  };
+
   useEffect(() => {
     filterRooms({
       id: id,
@@ -133,7 +154,12 @@ const DetailsHotelPage = () => {
       checkOut: parseInt(moment(date[1]).format('X')),
     });
     getHotelById(id);
+    getAllRoom();
   }, [id]);
+
+  useEffect(() => {
+    getRoomBooked();
+  }, [id, roomData, allRoom]);
 
   //get first image to render ui
   let firstImage = '';
@@ -148,13 +174,16 @@ const DetailsHotelPage = () => {
   }
   const showModal = (idRoom) => {
     setIsModalVisible(true);
-    const room = roomData.find((room) => room.id === idRoom);
+    const room = allRoom.find((room) => room.id === idRoom);
     setSelectedRoom(room);
     setDataOrder({
       ...dataOrder,
       selectedRoom: room,
     });
     setRoomImages(room.images);
+
+    const disable = roomBooked.some(({ id }) => id === idRoom);
+    setDisabled(disable);
   };
 
   const handleOk = () => {
@@ -422,19 +451,45 @@ const DetailsHotelPage = () => {
               </Row>
               <Divider style={{ margin: '12px' }} />
 
-              <List
-                itemLayout="horizontal"
-                dataSource={roomData && roomData.length > 0 ? roomData : []}
-                renderItem={(item) => (
-                  <List.Item>
-                    {' '}
-                    <RoomInDetailsHotel
-                      showModal={showModal}
-                      room={item ? item : ''}
-                    />{' '}
-                  </List.Item>
-                )}
-              />
+              {roomData && roomData.length && (
+                <List
+                  itemLayout="horizontal"
+                  dataSource={roomData && roomData.length > 0 ? roomData : []}
+                  renderItem={(item) => (
+                    <List.Item>
+                      {' '}
+                      <RoomInDetailsHotel
+                        showModal={showModal}
+                        room={item ? item : ''}
+                      />{' '}
+                    </List.Item>
+                  )}
+                />
+              )}
+
+              {roomBooked.length ? (
+                <div className="relative">
+                  <Divider />
+                  <List
+                    itemLayout="horizontal"
+                    dataSource={
+                      roomBooked && roomBooked.length > 0 ? roomBooked : []
+                    }
+                    renderItem={(item) => (
+                      <List.Item>
+                        {' '}
+                        <span className="bg-red-500 text-xs text-white p-1 rounded">
+                          Booked
+                        </span>
+                        <RoomInDetailsHotel
+                          showModal={showModal}
+                          room={item ? item : ''}
+                        />{' '}
+                      </List.Item>
+                    )}
+                  />
+                </div>
+              ) : null}
             </Skeleton>
           </Col>
           <Col
@@ -490,6 +545,7 @@ const DetailsHotelPage = () => {
       )}
       {selectedRoom.images && (
         <RoomDetailsModal
+          disabled={disabled}
           hotelId={id}
           isModalVisible={isModalVisible}
           handleOk={handleOk}
