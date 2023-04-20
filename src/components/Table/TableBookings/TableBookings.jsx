@@ -16,13 +16,21 @@ const TableBookings = ({ bookings }) => {
   const navigate = useNavigate();
   const param = useParams();
   const { t } = useTranslation();
-  const data = bookings.map((booking) => ({
+  let data = bookings.map((booking) => ({
     ...booking,
     checkIn: moment(booking.checkIn.date).format('DD-MM-YYYY'),
     checkOut: moment(booking.checkOut.date).format('DD-MM-YYYY'),
     createdAt: moment(booking.createdAt.date).format('DD-MM-YYYY'),
     total: '$' + booking.total,
   }));
+
+  function bringObjectsToFront(arr) {
+    const objectsToMove = arr.filter(({ status }) => status === 2);
+    const objectsToKeep = arr.filter(({ status }) => status !== 2);
+    return objectsToMove.concat(objectsToKeep);
+  }
+
+  data = bringObjectsToFront(data);
 
   const [dataSearch, setDataSearch] = useState(data);
 
