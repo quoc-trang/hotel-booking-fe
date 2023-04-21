@@ -10,7 +10,7 @@ const AdminLayout = () => {
   const role = window.sessionStorage.getItem('role');
 
   if (role !== 'ROLE_HOTEL') {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/hotel/login" replace />;
   }
   const loadingContext = useLoadingContext();
 

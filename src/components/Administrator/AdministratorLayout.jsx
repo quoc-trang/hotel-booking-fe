@@ -10,7 +10,7 @@ const AdministratorLayout = () => {
   const role = window.sessionStorage.getItem('role');
 
   if (role !== 'ROLE_ADMIN') {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/admin/login" replace />;
   } else {
     <Navigate to="/admin" replace />;
   }
